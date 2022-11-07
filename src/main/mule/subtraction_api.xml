@@ -21,6 +21,5 @@ output application/json
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="7ef1de5e-6d07-4a76-ac79-9ce3e253d713" message="#[payload]"/>
 		<logger level="INFO" doc:name="Logger" doc:id="b3d861c8-3f3a-4383-bc70-40e79129982a" message='#["Subtraction flow ended"]'/>
-		<logger level="INFO" doc:name="Logger" doc:id="d8a3d0bd-6bc2-412a-84f5-57e2e688d3ca" message='#["Added extra logger"]'/>
 	</flow>
 </mule>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2390620a-fff7-4278-8a3a-b1ce82cc5d06" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="subtraction_apiFlow" doc:id="2e0fc687-b5a1-4ca7-b388-627f1805751b" >
+		<http:listener doc:name="Listener" doc:id="b96a1882-5c8b-43ee-b1b6-f2cb29a94e30" config-ref="HTTP_Listener_config" path="/subtraction"/>
+		<logger level="INFO" doc:name="Logger" doc:id="81abaef4-6762-4127-be6b-91b3174ff50b" message='#["Subtraction flow started"]'/>
+		<ee:transform doc:name="Transform Message" doc:id="c42f5f3c-5386-4bc8-85cc-01c4fbfca8f7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"Subtraction": attributes.queryParams.fName - attributes.queryParams.lName]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="7ef1de5e-6d07-4a76-ac79-9ce3e253d713" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b3d861c8-3f3a-4383-bc70-40e79129982a" message='#["Subtraction flow ended"]'/>
+	</flow>
+</mule>

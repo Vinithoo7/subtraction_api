@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-"Subtraction": attributes.queryParams.fName - attributes.queryParams.lName]]></ee:set-payload>
+"Subtraction":attributes.queryParams.fName - attributes.queryParams.lName]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="7ef1de5e-6d07-4a76-ac79-9ce3e253d713" message="#[payload]"/>
